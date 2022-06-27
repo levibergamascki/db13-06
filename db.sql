@@ -1,5 +1,5 @@
-create database dbBanco;
-use dbBanco;
+create database dbBanco2;
+use dbBanco2;
 
 create table tbUF (
 	IdUF int auto_increment primary key,
@@ -189,3 +189,18 @@ call spInsertProduto(12345678910117, "Farinha de Suruí", 54.61, 120);
 call spInsertProduto(12345678910118, "Zelador de Cemitério", 24.50, 100);
 
 -- select * from tbProduto;
+/*
+drop procedure spInsertEndereco;
+delimiter $$
+create procedure spInsertEndereco(vCEP varchar(8), vLogradouro varchar(200))
+begin
+if not exists(select CEP from tbEndereco where CEP = vCEP order by CEP desc limit 1) then
+insert into tbendereco(CEP, Logradouro)
+values(vCEP, vLogradouro);
+
+end if;
+end
+$$
+call spInsertEndereco('12345050', 'Rua da Federal');
+select * from tbendereco
+*/
